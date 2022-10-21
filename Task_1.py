@@ -8,8 +8,26 @@
 # Вычисленное число pi
 # Количество выполненных итераций
 # Погрешность вычисления
-# Пример вызова функции: - vallis(1e-4) -> (3.141392685883853, 3928, -0.00019996770594010727)
+# Пример вызова функции: - vallis(1e-4) -> (3,141392685883853, 3928, -0.00019996770594010727)
+
+from math import pi
 
 
+def calculating_pi(vallis):
+    s = 0
+    d = 1
+    sgn = 1
+    count = 0
+    while True:
+        a = 4 / d
+        s = s + sgn * a
+        count += 1
+        if a < vallis:
+            accuracy = (s - pi) / 2
+            return s, count, accuracy
+        sgn = -sgn
+        d = d + 2
 
 
+vallis = 1e-3
+print(vallis, '=>', calculating_pi(vallis))
